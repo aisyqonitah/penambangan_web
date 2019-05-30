@@ -193,7 +193,7 @@
   
     <li class="md-tabs__item">
       
-        <a href=".." title="Web Content Mining" class="md-tabs__link md-tabs__link--active">
+        <a href=".." title="Web Content Mining" class="md-tabs__link">
           Web Content Mining
         </a>
       
@@ -206,7 +206,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../pen2/" title="Web Structure Mining" class="md-tabs__link">
+        <a href="../pen2/" title="Web Structure Mining" class="md-tabs__link md-tabs__link--active">
           Web Structure Mining
         </a>
       
@@ -241,12 +241,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
     
     <label class="md-nav__link" for="nav-1">
       Web Content Mining
@@ -286,63 +284,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Crawling
-      </label>
-    
-    <a href="./" title="Crawling" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../proses/" title="Crawling" class="md-nav__link">
       Crawling
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#halaman-web" title="Halaman Web" class="md-nav__link">
-    Halaman Web
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proses-crawling" title="Proses Crawling" class="md-nav__link">
-    Proses Crawling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#membuat-dan-menyimpan-data-di-database" title="Membuat dan Menyimpan Data di Database" class="md-nav__link">
-    Membuat dan Menyimpan Data di Database
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -451,10 +397,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Web Structure Mining
@@ -494,11 +442,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../proses2/" title="Crawling" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Crawling
+      </label>
+    
+    <a href="./" title="Crawling" class="md-nav__link md-nav__link--active">
       Crawling
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#halaman-web" title="Halaman Web" class="md-nav__link">
+    Halaman Web
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proses-crawling" title="Proses Crawling" class="md-nav__link">
+    Proses Crawling
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -577,13 +570,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#membuat-dan-menyimpan-data-di-database" title="Membuat dan Menyimpan Data di Database" class="md-nav__link">
-    Membuat dan Menyimpan Data di Database
-  </a>
-  
-</li>
-      
       
       
       
@@ -607,72 +593,94 @@
 <blockquote>
 <p><a href="https://palominobag.com/best-seller">https://palominobag.com/best-seller</a></p>
 </blockquote>
-<p>Data yang ada pada website tersebut sebanyak 153 data.</p>
 <h3 id="proses-crawling"><strong>Proses Crawling</strong><a class="headerlink" href="#proses-crawling" title="Permanent link">&para;</a></h3>
 <p>Untuk mengakses halaman web dan tag html digunakan library:</p>
-<pre class="codehilite"><code class="language-python">import requests 
-from bs4 import BeautifulSoup</code></pre>
+<pre class="codehilite"><code class="language-python">import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+import networkx as nx
+import matplotlib.pyplot as plt</code></pre>
 
-<p>Untuk menghubungkan ke website dan mengambil tag html digunakan code berikut:</p>
-<pre class="codehilite"><code class="language-python">page = requests.get(src)
-soup = BeautifulSoup(page.content, 'html.parser')
-links = soup.findAll(class_='product-name')</code></pre>
-
-<pre class="codehilite"><code class="language-python">links = soup.findAll(class_='product-name')</code></pre>
-
-<p>Code diatas digunakan untuk mendapatkan semua tag html pada halaman web tersebut. Dan hasinya berupa list.</p>
-<p>Menentukan informasi apa saja yang akan diambil pada halaman web. Kemudian kita mengambil data berdasarkan class pada code html di website tersebut. Disini kita mengambil data yang berada pada class='product-name':</p>
-<p><pre class="codehilite"><code class="language-python">for i in links:
-    try :
-        url = i.find ('a')['href']
-        print(url)
-        page = requests.get(url)
+<ol>
+<li>Untuk mengambil semua link yang ada pada website:</li>
+</ol>
+<pre class="codehilite"><code class="language-python">def getAllLinks(src):
+        page = requests.get(src)
         soup = BeautifulSoup(page.content, 'html.parser')
-        konten = soup.find(class_='grid_12 alpha omega')
-        judul = konten.find(class_='product-name no-rel').getText()
-        harga = konten.find(class_='price').getText()
-        detil = konten.find(class_='box-collateral').getText(' ')</code></pre>
-Untuk mengambil url yang ada pada class='product-name' digunakan:</p>
-<pre class="codehilite"><code class="language-python">url = i.find ('a')['href']
-print(url)</code></pre>
+        tags = soup.findAll("a")
+        links = []
+        for tag in tags:
+            try:
+                link = tag['href']
+                if not link in links and 'http' in link:
+                    links.append(link)
+            except KeyError:
+                pass
+        return links
+    except:
+        return list()</code></pre>
 
-<p>Untuk mengambil data judul, harga, dan detil barang yang berada class='product-name' dan kemudian pencarian dipersempit lagi  di class='grid_12 alpha omega' menggunakan:</p>
-<pre class="codehilite"><code class="language-python">konten = soup.find(class_='grid_12 alpha omega')
-judul = konten.find(class_='product-name no-rel').getText()
-harga = konten.find(class_='price').getText()
-detil = konten.find(class_='box-collateral').getText(' ')</code></pre>
+<p>Code diatas digunakan untuk mendapatkan semua link pada halaman web tersebut. </p>
+<ol>
+<li>Memfilter link:</li>
+</ol>
+<p><pre class="codehilite"><code class="language-python">def simplifiedURL(url):
+    # cek 1 : www
+    if "www." in url:
+        ind = url.index("www.")+4
+        url = url[ind:]
+    # cek 2 : http/https
+    if not "http" in url:
+        url = "http://"+url
+    # cek 3 : tanda / di akhir
+    if url[-1] == "/":
+        url = url[:-1]
+    return url</code></pre>
+- filter 1</p>
+<p>Digunakan untuk menambahkan "http://" pada link dengan index awal "www."</p>
+<ul>
+<li>filter 2</li>
+</ul>
+<p>Digunakan untuk menambahkan "http://" pada link</p>
+<ul>
+<li>filter 3</li>
+</ul>
+<p>Digunakan untuk mengecek "/" di akhir link atau link[-1]="/", maka ambil link dari index link[-1] sampai index awal link atau link=link[:-1].</p>
+<ol>
+<li>Crawler Data:</li>
+</ol>
+<pre class="codehilite"><code class="language-python">def crawl(url, max_deep,  show=False, deep=0, done=[]):
+    global edgelist
+    deep += 1
+    url = simplifiedURL(url)
+    if not url in done:
+        links = getAllLinks(url)
+        done.append(url)
+        if show:
+            if deep == 1:
+                print(url)
+            else:
+                print("|", end="")
+                for i in range(deep-1): print("--", end="")
+                print("(%d)%s" %(len(links),url))
 
-<p>Variable konten diatas menyimpan setiap data yang diambil pada class='grid_12 alpha omega' kemudian variable judul, harga,detil akan mengambil data yang telah ditampung didalam variable konten</p>
-<p>Untuk mengambil sebanyak 153 data yang ada pada website tesebut menggunakan:</p>
-<pre class="codehilite"><code>url=[str(i) for i in range(0,5)]
-for a in url:
-    src= ('https://palominobag.com/best-seller?limit=36&amp;p='+a)
-    crawl (src)
-    conn.commit()</code></pre>
+        for link in links:
+            link = simplifiedURL(link)
+            edge = (url,link)
+            if not edge in edgelist:
+                edgelist.append(edge)
+            if (deep != max_deep):
+                crawl(link, max_deep, show, deep, done)</code></pre>
 
-<h3 id="membuat-dan-menyimpan-data-di-database"><strong>Membuat dan Menyimpan Data di Database</strong><a class="headerlink" href="#membuat-dan-menyimpan-data-di-database" title="Permanent link">&para;</a></h3>
-<p>Untuk membuat database dan tablenya menggunakan code dibawah ini:</p>
-<pre class="codehilite"><code class="language-python">conn = sqlite3.connect('ba.db')
-c = 1
-choice = input("Update data? Y/N").lower()
-if choice == 'y':
-    conn.execute('drop table if exists BOOK')
-    conn.execute('''CREATE TABLE BOOK
-                 (JUDUL     TEXT     NOT NULL,
-                 HARGA  TEXT     NOT NULL,
-                 DESKRIPSI  TEXT     NOT NULL);''')</code></pre>
-
-<p>Kemudian data yang telah di crawl diatas disimpan kedalam table database yang telah dibuat menggunakan code dibawah ini:</p>
-<pre class="codehilite"><code class="language-python">conn.execute("INSERT INTO BOOK \
-                                VALUES (?, ?, ?)", (judul, harga, detil));
-            except AttributeError:
-                print("")
-        conn.commit()
-    except ValueError:
-        print('Download selesai')</code></pre>
-
-<p>Ini adalah tampilan isi table dalam databasenya:</p>
-<p><img alt="Material for MkDocs" src="../assets/images/db.png" /></p>
+<p><code>if not url in cek</code> digunakan untuk mengecek apakah link tersebut sudah pernah dicrawl atau tidak, jika pernah maka link tidak perlu dimasukkan pada <em>edgelist</em>, jika belum maka masukkan link pada <em>edgelist</em>. Hasil dari proses <em>crawl</em> ini akan menghasilkan <em>edgelist</em> yang berisi link yang sudah difilter.</p>
+<ol>
+<li>Menamanggil Crawler Data:</li>
+</ol>
+<pre class="codehilite"><code class="language-python">root = "https://palominobag.com/best-seller"
+nodelist = [root]
+edgelist = []
+crawl(root, 3, show=True)
+edgelistFrame = pd.DataFrame(edgelist, None, ("From", "To"))</code></pre>
                 
                   
                 
@@ -693,7 +701,7 @@ if choice == 'y':
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../library/" title="Library" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../library2/" title="Library" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -708,7 +716,7 @@ if choice == 'y':
           </a>
         
         
-          <a href="../preprosesing/" title="Preprosesing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../pagerank2/" title="Preprosesing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
